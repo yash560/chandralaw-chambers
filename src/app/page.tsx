@@ -111,7 +111,7 @@ export default function HomePage() {
               <div className="legal-card p-4 sm:p-6 space-y-4">
                 <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden border border-border shadow-xl">
                   <img
-                    src="/assets/counsel/shlok_chandra.jpg"
+                    src="/assets/counsel/shlok_chandra_centered.jpg"
                     alt={CHAMBERS_INFO.managingPartner}
                     className="w-full h-full object-cover"
                   />

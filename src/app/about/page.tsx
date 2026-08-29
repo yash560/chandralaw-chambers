@@ -28,7 +28,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-5">
             <div className="relative h-96 w-full rounded-3xl overflow-hidden border border-border shadow-2xl">
-              <img src="/assets/counsel/shlok_chandra.jpg" alt={CHAMBERS_INFO.managingPartner} className="w-full h-full object-cover" />
+              <img src="/assets/counsel/shlok_chandra_centered.jpg" alt={CHAMBERS_INFO.managingPartner} className="w-full h-full object-cover" />
               <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/85 backdrop-blur-md text-white text-xs font-bold">
                 {CHAMBERS_INFO.managingPartner}
                 <div className="text-[10px] text-amber-400 font-normal">{CHAMBERS_INFO.barCouncilEnrollment}</div>
