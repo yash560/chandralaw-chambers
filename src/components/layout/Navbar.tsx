@@ -56,8 +56,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRetainer }) => {
 
           <nav className="hidden lg:flex items-center space-x-1 text-xs font-bold text-muted-foreground">
             <Link href="/" className="px-3 py-2 rounded-xl hover:text-foreground hover:bg-muted">Chambers</Link>
+            <Link href="/about" className="px-3 py-2 rounded-xl hover:text-foreground hover:bg-muted">About</Link>
             <Link href="/practice-areas" className="px-3 py-2 rounded-xl hover:text-foreground hover:bg-muted">Practice Areas</Link>
             <Link href="/cause-list" className="px-3 py-2 rounded-xl hover:text-foreground hover:bg-muted">Cause List</Link>
+            <Link href="/blog" className="px-3 py-2 rounded-xl hover:text-foreground hover:bg-muted">Journal</Link>
+            <Link href="/faq" className="px-3 py-2 rounded-xl hover:text-foreground hover:bg-muted">FAQ</Link>
             <Link href="/contact" className="px-3 py-2 rounded-xl hover:text-foreground hover:bg-muted">Offices</Link>
           </nav>
 
@@ -84,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRetainer }) => {
                 className="hidden sm:flex items-center space-x-1 px-3 py-2 rounded-xl bg-muted text-xs font-bold text-muted-foreground"
               >
                 <User className="w-3.5 h-3.5" />
-                <span>Vault</span>
+                <span>Sign In</span>
               </Link>
             )}
 
@@ -117,9 +120,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRetainer }) => {
         <div className="lg:hidden p-4 bg-card border-b border-border space-y-3">
           <div className="grid grid-cols-2 gap-2 text-xs font-bold text-muted-foreground">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">Chambers</Link>
+            <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">About</Link>
             <Link href="/practice-areas" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">Practices</Link>
             <Link href="/cause-list" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">Cause List</Link>
-            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">Chambers</Link>
+            <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">Journal</Link>
+            <Link href="/faq" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">FAQ</Link>
+            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-muted/60">Offices</Link>
+            <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="p-3 rounded-xl bg-blue-600 text-white font-bold text-center">Sign In</Link>
           </div>
         </div>
       )}

@@ -8,7 +8,7 @@ import { MatterIntakeConflictScanner } from '@/components/MatterIntakeConflictSc
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { RetainerModal } from '@/components/RetainerModal';
 import { Footer } from '@/components/layout/Footer';
-import { CHAMBERS_INFO, PRACTICE_AREAS, COURT_DOCKETS } from '@/lib/constants';
+import { CHAMBERS_INFO, PRACTICE_AREAS, COURT_DOCKETS, REVIEWS, BLOG_POSTS, FAQS } from '@/lib/constants';
 import {
   Scale,
   Calendar,
@@ -20,10 +20,15 @@ import {
   Phone,
   Gavel,
   BookOpen,
+  Star,
+  ChevronDown,
+  Shield,
+  FileCheck,
 } from 'lucide-react';
 
 export default function HomePage() {
   const [isRetainerOpen, setIsRetainerOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   return (
     <div className="flex-1 flex flex-col justify-between">
@@ -192,7 +197,39 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. Live Court Cause List & Hearing Docket Strip */}
+        {/* 4. 4-Stage Litigation Strategic Protocol */}
+        <section className="p-8 sm:p-12 rounded-3xl bg-card border border-border space-y-8">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <span className="text-xs font-bold text-blue-600 uppercase">Litigation Protocol</span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground">The 4-Stage Chambers Advocacy Cycle</h2>
+            <p className="text-xs text-muted-foreground">From conflict clearance and emergency interim stays to final decree enforcement.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-5 rounded-2xl bg-muted/60 border border-border space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-xs flex items-center justify-center">01</div>
+              <h3 className="font-black text-sm text-foreground">Conflict Clearance</h3>
+              <p className="text-[11px] text-muted-foreground">Database party screening to guarantee zero conflict and strict attorney-client privilege.</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-muted/60 border border-border space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-xs flex items-center justify-center">02</div>
+              <h3 className="font-black text-sm text-foreground">Strategic Pleadings</h3>
+              <p className="text-[11px] text-muted-foreground">Precision drafting of petitions, injunction grounds, and statutory limitation calculations.</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-muted/60 border border-border space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-xs flex items-center justify-center">03</div>
+              <h3 className="font-black text-sm text-foreground">Senior Advocacy</h3>
+              <p className="text-[11px] text-muted-foreground">Direct oral arguments before Supreme Court constitution benches and High Court commercial rosters.</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-muted/60 border border-border space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-xs flex items-center justify-center">04</div>
+              <h3 className="font-black text-sm text-foreground">Decree Execution</h3>
+              <p className="text-[11px] text-muted-foreground">Aggressive enforcement of arbitral awards, bank guarantee recoveries, and contempt motions.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Live Court Cause List & Hearing Docket */}
         <section id="cause-list" className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
@@ -217,6 +254,131 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* 6. Genuine Client Endorsements & Legal Reviews */}
+        <section id="reviews" className="space-y-8">
+          <div className="text-center space-y-2 max-w-xl mx-auto">
+            <div className="inline-flex items-center space-x-1 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold">
+              <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+              <span>Verified General Counsel & Corporate Endorsements</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground">Client Endorsements</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {REVIEWS.map((r) => (
+              <div key={r.id} className="legal-card p-6 space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-1">
+                    {[...Array(r.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed italic">
+                    "{r.review}"
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-border flex items-center space-x-3">
+                  <img src={r.avatar} alt={r.author} className="w-10 h-10 rounded-full object-cover border border-border" />
+                  <div>
+                    <div className="font-bold text-xs text-foreground">{r.author}</div>
+                    <div className="text-[10px] text-muted-foreground">{r.designation}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 7. Legal Journal & Precedent Studies */}
+        <section id="journal" className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div className="space-y-1 max-w-xl">
+              <div className="inline-flex items-center space-x-1.5 px-3.5 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-xs">
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Chambers Jurisprudence Journal</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                Litigation Insights & Analysis
+              </h2>
+            </div>
+            <Link href="/blog" className="inline-flex items-center space-x-1 text-xs font-bold text-blue-600 hover:underline">
+              <span>Read Full Journal</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {BLOG_POSTS.map((b) => (
+              <div key={b.id} className="legal-card overflow-hidden flex flex-col justify-between group">
+                <div className="relative h-48 w-full overflow-hidden bg-muted">
+                  <img src={b.heroImage} alt={b.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-amber-300 font-bold text-[10px]">
+                    {b.category}
+                  </span>
+                </div>
+                <div className="p-5 space-y-2 flex-1 flex flex-col justify-between">
+                  <div className="space-y-1.5">
+                    <div className="text-[10px] text-muted-foreground">{b.publishedDate} • {b.readTime}</div>
+                    <h3 className="font-extrabold text-sm text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {b.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2">{b.excerpt}</p>
+                  </div>
+                  <div className="pt-3 border-t border-border">
+                    <Link href={`/blog/${b.slug}`} className="text-xs font-bold text-blue-600 hover:underline">
+                      Read Analysis &rarr;
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 8. Frequently Asked Questions */}
+        <section id="faq" className="max-w-4xl mx-auto space-y-6">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold text-blue-600 uppercase">Chambers FAQ</span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-foreground">Frequently Asked Questions</h2>
+          </div>
+
+          <div className="space-y-3">
+            {FAQS.map((faq, idx) => (
+              <div key={idx} className="legal-card p-5 space-y-2">
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                  className="w-full flex items-center justify-between text-left font-extrabold text-sm text-foreground"
+                >
+                  <span>{faq.question}</span>
+                  <ChevronDown className={`w-4 h-4 text-blue-600 transition-transform ${openFaqIndex === idx ? 'rotate-180' : ''}`} />
+                </button>
+                {openFaqIndex === idx && (
+                  <p className="text-xs text-muted-foreground leading-relaxed pt-2 border-t border-border">
+                    {faq.answer}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 9. Final Retainer CTA */}
+        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white text-center space-y-6 shadow-2xl border border-blue-800/30">
+          <h2 className="text-2xl sm:text-4xl font-black max-w-xl mx-auto">
+            Retain Senior Standing Counsel for High-Stakes Commercial Matters
+          </h2>
+          <p className="text-xs sm:text-sm text-blue-200 max-w-md mx-auto">
+            Schedule a confidential brief conference with <strong>{CHAMBERS_INFO.managingPartner}</strong>.
+          </p>
+          <button
+            onClick={() => setIsRetainerOpen(true)}
+            className="px-8 py-4 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-black text-xs sm:text-sm shadow-xl"
+          >
+            Clear Conflict & Register Brief &rarr;
+          </button>
         </section>
       </main>
 
