@@ -16,7 +16,7 @@
   .dark {
     --background: #090d16;
     --foreground: #f8fafc;
-    --card: #111827;
+    --card: #101726;
     --card-foreground: #f8fafc;
     --border: #1e293b;
     --muted: #172033;
@@ -29,6 +29,16 @@ body {
   color: var(--foreground);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
+  letter-spacing: -0.011em;
+}
+
+/* Button & Card Micro-Interactions */
+button, a {
+  transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1), opacity 160ms ease, background-color 160ms ease;
+}
+
+button:active, a:active {
+  transform: scale(0.97) !important;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -37,6 +47,35 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* AOS (Animate On Scroll) Hardware Accelerated Rules */
+@keyframes aosFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aosFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+[data-aos="fade-up"] {
+  animation: aosFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-aos="fade-in"] {
+  animation: aosFadeIn 0.5s ease-out forwards;
 }
 
 /* Mobile-First Horizontal Snap Slider */
@@ -73,11 +112,12 @@ body {
   background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: 1.5rem;
-  box-shadow: 0 10px 30px -10px rgba(30, 58, 138, 0.06);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px -10px rgba(30, 58, 138, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .legal-card:hover {
-  box-shadow: 0 20px 40px -15px rgba(30, 58, 138, 0.12);
-  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(30, 58, 138, 0.1);
+  border-color: rgba(37, 99, 235, 0.35);
+  transform: translateY(-2px);
 }
